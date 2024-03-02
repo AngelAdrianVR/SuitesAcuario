@@ -52,4 +52,5 @@ watchEffect(async () => {
             </div>
         </div>
     </div>
+    <!-- Para cargar estilos y mopstrarlos. Si es necesario, eliminarlo -->
 </template>
