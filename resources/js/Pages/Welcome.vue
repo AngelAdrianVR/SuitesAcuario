@@ -52,7 +52,7 @@
             </button>
 
             <!-- info de contacto  -->
-            <div class="absolute top-0 right-0 bg-white border-b-8 border-black py-2 pl-5 pr-52 lg:flex items-center space-x-5 hidden ">
+            <div class="absolute top-0 right-0 bg-white border-b-8 border-black py-2 pl-5 pr-36 lg:flex items-center space-x-5 hidden ">
                 <div class="flex items-center space-x-3">
                     <i class="fa-regular fa-envelope text-sm text-primary"></i>
                     <p class="text-sm underline">mztsuitesacuario@gmail.com</p>
@@ -92,12 +92,69 @@
                     <!-- Texto centrado -->
                     <div class="absolute top-[40%] flex items-center justify-between w-full px-16">
                         <i @click.stop="handleMinusImage" class="fa-solid fa-angle-left text-white text-xl px-[23px] py-4 rounded-full bg-black/60 hover:scale-105"></i>
-                        <h1 class="text-7xl font-bold w-1/2 text-white text-center">{{ 'Descrube nuestras Suites en Mazatlán ' }}</h1>
+                        <h1 class="text-7xl font-bold w-1/2 text-white text-center">{{ frontPageTexts[currentTextIndex] }}</h1>
                         <i @click.stop="handlePlusImage" class="fa-solid fa-angle-right text-white text-xl px-[23px] py-4 rounded-full bg-black/60 hover:scale-105"></i>
                     </div>
+                        <div class="absolute bottom-14 left-1/2 flex items-center justify-center space-x-3 text-xs">
+                            <i @click="currentTextIndex = index" v-for="(dot, index) in frontPageTexts" :key="index" :class="{ '!text-primary text-base scale-110': currentTextIndex === index }" class="fa-solid fa-circle transition text-white ease-linear duration-200"></i>
+                        </div>
+                        <PrimaryButton class="absolute bottom-16 right-28 !px-14 !text-base">Enviar mensaje</PrimaryButton>
                 </figure>
             </section>
-           
+
+            <!-- Contenido -->
+            <section class="my-10 mx-2 lg:mx-24">
+                <div class="lg:grid grid-cols-3 gap-x-12">
+                    <div>
+                        <div class="flex items-center space-x-5">
+                            <h2 class="text-2xl text-primary font-bold">Nosotros</h2>
+                            <div class="border-b-4 border-primary w-16 mt-[2px]"></div>
+                        </div>
+                        <p class="font-bold text-xl mt-5">BIENVENIDOS A <span class="ml-1 text-primary">SUITE ACUARIO MAZATLÁN</span></p>
+                        <p class="mt-3 text-lg">Somos una empresa dedicada a proporcionar comodidad y tranquilidad en espacios residenciales de calidad, a precios asequibles.</p>
+                        <p class="mt-9 text-lg">Nuestra suites son acogedoras y luminosas diseñadas para hacer realidad tus sueños. Con privacidad y una guía local para descubrir los mejores lugares.</p>
+                    </div>
+
+                    <figure class="col-span-2 w-full">
+                        <img class="object-contain mx-auto w-3/4" src="../../../public/images/content_image.png" alt="">
+                    </figure>
+                </div>
+
+                <!-- suites -->
+                <div class="mt-20">
+                    <div class="flex justify-center items-center space-x-7">
+                        <div class="border-b-4 border-primary w-40 mt-[2px]"></div>
+                        <h2 class="text-2xl font-bold">EXPLORE NUESTRAS <span class="text-primary">SUITES ACUARIO MAZATLÁN</span> </h2>
+                        <div class="border-b-4 border-primary w-40 mt-[2px]"></div>
+                    </div>
+
+                    <div class="md:grid md:grid-cols-2 lg:grid-cols-3 gap-4 h-[535px] mt-16">
+                        <SuiteCard v-for="suite in suites" :key="suite" :suite="suite" />
+                    </div>
+                </div>
+
+                <!-- Ubicación  -->
+                <div class="border border-grayD9 rounded-lg grid grid-cols-3 mt-52 mb-12">
+                    <div class="col-span-2 lg:px-20">
+                        <h2 class="text-2xl font-bold">UBICACIÓN</h2>
+                        <p class="my-4">Nuestras suites están estratégicamente ubicadas en el corazón de la zona turística de Mazatlán, Sinaloa, México. 
+                            A pocos pasos, encontrarás una vibrante selección de bares, tiendas y el renombrado acuario. Además, la playa se encuentra a tan solo 3 minutos a pie.
+                            Sumérgete en la belleza natural de la región y descubre los encantos de nuestros parques y otros destinos que seguramente dejarán una
+                            impresión duradera en tu memoria
+                        </p>
+                    </div>
+
+                    <!-- images -->
+                    <div class="py-9 px-7">
+                        <figure class="border rounded-lg w-full h-full flex items-center">
+                            <i class="fa-solid fa-angle-left"></i>
+                            <img class="mx-auto" src="../../../public/images/location1.png" alt="">
+                            <i class="fa-solid fa-angle-right"></i>
+                        </figure>
+                    </div>
+                </div>
+            </section>
+
             <!-- form -->
             <!-- <section class="lg:mx-24 md:mx-20 mx-1 mt-44 relative" id="Contacto">
                 <div class="lg:grid grid-cols-5 gap-9 mb-6">
@@ -216,40 +273,13 @@
 import { useForm, Link, Head } from "@inertiajs/vue3";
 // import { useToast } from "vue-toastification";
 import InputError from "@/Components/InputError.vue";
+import PrimaryButton from "@/Components/PrimaryButton.vue";
+import SuiteCard from "@/Components/MyComponents/SuiteCard.vue";
 
-// services images
-// import s1 from "../../../public/images/services1.png";
-// import s2 from "../../../public/images/services2.png";
-// import s3 from "../../../public/images/services3.png";
-// import s4 from "../../../public/images/services4.png";
-// import s5 from "../../../public/images/services5.png";
-// import s6 from "../../../public/images/services6.png";
-
-// home images
-// import h1 from "../../../public/images/h1.png";
-// import h2 from "../../../public/images/h2.png";
-
-// projects images
-// import p1 from "../../../public/images/p1.png";
-// import p2 from "../../../public/images/p2.png";
-// import p3 from "../../../public/images/p3.png";
-// import p4 from "../../../public/images/p4.png";
-// import p5 from "../../../public/images/p5.png";
-// import p6 from "../../../public/images/p6.png";
-// import p7 from "../../../public/images/p7.png";
-// import p8 from "../../../public/images/p8.png";
-// import p9 from "../../../public/images/p9.png";
-// import p10 from "../../../public/images/p10.png";
-// import p11 from "../../../public/images/p11.png";
-// import p12 from "../../../public/images/p12.png";
-// import p13 from "../../../public/images/p13.png";
-// import p14 from "../../../public/images/p14.png";
-// import p15 from "../../../public/images/p15.png";
-// import p16 from "../../../public/images/p16.png";
-// import p17 from "../../../public/images/p17.png";
-// import p18 from "../../../public/images/p18.png";
-// import p19 from "../../../public/images/p19.png";
-// import p20 from "../../../public/images/p20.png";
+// suites images
+import s1 from "../../../public/images/suite1.png";
+import s2 from "../../../public/images/suite2.png";
+import s3 from "../../../public/images/suite3.png";
 
 export default {
     data() {
@@ -262,6 +292,9 @@ export default {
         });
         return {
             form,
+            frontPageTexts: ['Descrube nuestras Suites en Mazatlán', 'Texto número 2 de portada', 'Texto número 3 de portada', 'Texto número 4 de portada'], // variable para texto de portada
+            currentTextIndex: 0, // variable para texto de portada
+            timer: null, // variable para texto de portada
             isNavbarFixed: false,
             currentTestimony: 0,
             lastScrollY: 0,
@@ -270,112 +303,40 @@ export default {
             currentServiceIndex: null,
             currentKirbyIndex: 0,
             showPreview: false,
-            // services: [
-            //     {
-            //         title: "Deslinde de parcelas",
-            //         description: "Definimos de manera precisa las fronteras de tu parcela para garantizar la propiedad y el uso adecuado de la tierra.",
-            //         image: s1,
-            //     },
-            //     {
-            //         title: "Planos topográficos",
-            //         description: "Brindamos una visión detallada y precisa del terreno. Ya sea para proyectos de construcción, planificación urbana o análisis del terreno.",
-            //         image: s2,
-            //     },
-            //     {
-            //         title: "Obra civil",
-            //         description: "Desde el diseño hasta la construcción, gestionamos cada etapa del proceso con precisión y profesionalismo.",
-            //         image: s3,
-            //     },
-            //     {
-            //         title: "Lotificaciones",
-            //         description: "Convertimos terrenos en comunidades planificadas, creamos espacios funcionales y atractivos ",
-            //         image: s4,
-            //     },
-            //     {
-            //         title: "Diseño arquitectónico",
-            //         description: "Desde residencias hasta espacios comerciales, cada diseño es una expresión de tus necesidades y estilos. ",
-            //         image: s5,
-            //     },
-            //     {
-            //         title: "Experiencia con acabados de lujo",
-            //         description: "Desde selecciones de materiales exclusivos hasta ejecución impecable, creamos ambientes que reflejan tu gusto refinado.",
-            //         image: s6,
-            //     },
-            // ],
-            // projects: [
-            //     {
-            //         description: "Pulido de losa",
-            //         image: p1,
-            //     },
-            //     {
-            //         description: "Cimentación y compactación de material de banco",
-            //         image: p2,
-            //     },
-            //     {
-            //         description: "Mecanica de suelos",
-            //         image: p4,
-            //     },
-            //     {
-            //         description: "Demolición y retiro de escombro ",
-            //         image: p5,
-            //     },
-            //     {
-            //         description: "Replanteo de puntos con gps topografico",
-            //         image: p7,
-            //     },
-            //     {
-            //         description: " Cimbrado, armado y colado de losa Estructural",
-            //         image: p8,
-            //     },
-            //     {
-            //         description: "Mecanica de suelos prueba spt",
-            //         image: p9,
-            //     },
-            //     {
-            //         description: "Carga y acarreo de escombro",
-            //         image: p10,
-            //     },
-            //     {
-            //         description: "Cimentación de mampostería ",
-            //         image: p11,
-            //     },
-            //     {
-            //         description: "Experiencia en proyectos verticales",
-            //         image: p13,
-            //     },
-            //     {
-            //         description: "Armado de losa",
-            //         image: p14,
-            //     },
-            //     {
-            //         description: "Construction de carcamárcamo pluvial",
-            //         image: p17,
-            //     },
-            //     {
-            //         description: "Estructura de acero",
-            //         image: p18,
-            //     },
-            //     {
-            //         description: "Muro con ladrillo aparente",
-            //         image: p19,
-            //     },
-            // ],
-            // kirby: [
-            //     {
-            //         title: "Nosotros",
-            //         image: h1,
-            //         description: "Contamos con amplia experiencia en el ramo de la construcción."
-            //     },
-            //     {
-            //         title: "Tecnología avanzada ",
-            //         image: h2,
-            //         description: "Nuestro compromiso con tecnología de vanguardia nos lleva a emplear el potente receptor GNSS Reach RS+ de Emlid."
-            //     },
-            // ],
+            suites: [
+                {
+                    imagePath: s1,
+                    name: 'Suite clásica',
+                    price: '$500/Noche',
+                    beds: '1 cama',
+                    people: 'Ideal para 2 personas',
+                    description: 'La Suite Clásica es la elección perfecta para aquellos que buscan una experiencia de alojamiento cómoda y asequible. Esta habitación cuenta con todas las comodidades básicas que necesitas para tu estancia.',
+                },
+                {
+                    imagePath: s2,
+                    name: 'Suite familiar',
+                    price: '$600/Noche',
+                    beds: '2 camas',
+                    people: 'Ideal para 4 personas',
+                    description: 'La Suite Duo es la elección perfecta para aquellos que buscan una experiencia de alojamiento cómoda y asequible. Esta habitación cuenta con todas las comodidades básicas que necesitas para tu estancia, incluyendo una cama.',
+                },
+                {
+                    imagePath: s3,
+                    name: 'Suite premium',
+                    price: '$800/Noche',
+                    beds: '1 cama',
+                    people: 'Ideal para 2 personas',
+                    description: 'La Suite es la elección perfecta para aquellos que buscan una experiencia de alojamiento cómoda y lujosa. Esta habitación cuenta con todas las comodidades básicas que necesitas para tu estancia.',
+                },
+            ]
         };
     },
     components: {
+        PrimaryButton,
+        SuiteCard,
         InputError,
+        Link,
+        Head,
     },  
     mounted() {
         window.addEventListener('scroll', this.handleScroll);
@@ -426,12 +387,25 @@ export default {
             this.showPreview = false;
             this.scrollToSection('Contacto');
             this.$refs.nameInput.focus();
-        }
+        },
+        handlePlusImage(){
+            this.currentTextIndex === (this.frontPageTexts?.length - 1) ? this.currentTextIndex = 0 : this.currentTextIndex += 1
+        },
+        handleMinusImage(){
+            this.currentTextIndex === 0 ? this.currentTextIndex = this.frontPageTexts?.length - 1 : this.currentTextIndex -= 1
+        },
+        startTimer() {
+            this.timer = setInterval(() => {
+                this.currentTextIndex = (this.currentTextIndex + 1) % this.frontPageTexts.length;
+            }, 4000);
+            }
     },
-    components: {
-        Link,
-        Head,
-    }
+    mounted() {
+        this.startTimer();
+    },
+    beforeUnmount() {
+        clearInterval(this.timer);
+    },
 };
 </script>
 
