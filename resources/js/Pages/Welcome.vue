@@ -31,9 +31,6 @@
             <button class="mx-2 rounded-sm px-1 py-px hover:text-primary text-white transition-colors ease-linear duration-200" @click="$inertia.visit('/')">Nosotros</button>
             <button class="mx-2 rounded-sm px-1 py-px hover:text-primary text-white transition-colors ease-linear duration-200" @click="$inertia.visit('/')">Suites</button>
             <button class="mx-2 rounded-sm px-1 py-px hover:text-primary text-white transition-colors ease-linear duration-200" @click="$inertia.visit('/')">Contacto</button>
-            <a href="https://api.whatsapp.com/send?phone=526691178743&text=Hola!%20vi%20tu%20página%20,%20me%20interesa%20su%20servicio!" target="_blank" rel="noopener noreferrer">
-                <i class="fa-brands fa-whatsapp text-xl ml-2 text-primary"></i>
-            </a>
         </div>
 
         <!-- navbar -->
@@ -42,8 +39,8 @@
 
             <!-- Logotipo -->
             <div class="flex space-x-2 items-center">
-                <img src="../../../public/images/iso_logo.png" class="h-14" alt="logo" />
-                <span class="font-bold text-primary text-xl">Suites Acuario Mazatlán</span>
+                <img src="../../../public/images/iso_logo.png" class="h-9 md:h-14" alt="logo" />
+                <span class="font-bold text-primary text-base md:text-xl">Suites Acuario Mazatlán</span>
             </div>
 
             <!-- Hamburger button  -->
@@ -84,59 +81,59 @@
             <div class="h-16 w-32 -mr-10 bg-primary hidden lg:block"></div>
         </nav>
 
-        <main class="pt-24">
+        <main class="pt-16 md:pt-24">
             <!-- portada -->
             <section>
                 <figure class="w-full relative">
                     <img class="object-contain w-full" src="../../../public/images/home_1.png" alt="">
                     <!-- Texto centrado -->
-                    <div class="absolute top-[40%] flex items-center justify-between w-full px-16">
-                        <i @click.stop="handleMinusImage" class="fa-solid fa-angle-left text-white text-xl px-[23px] py-4 rounded-full bg-black/60 hover:scale-105"></i>
-                        <h1 class="text-7xl font-bold w-1/2 text-white text-center">{{ frontPageTexts[currentTextIndex] }}</h1>
-                        <i @click.stop="handlePlusImage" class="fa-solid fa-angle-right text-white text-xl px-[23px] py-4 rounded-full bg-black/60 hover:scale-105"></i>
+                    <div class="absolute top-[40%] flex items-center justify-between w-full px-3 md:px-16">
+                        <i @click.stop="handleMinusImage" class="fa-solid fa-angle-left text-white text-xs lg:text-xl px-3 lg:px-[23px] py-2 lg:py-4 rounded-full bg-black/60 hover:scale-105"></i>
+                        <h1 class="text-lg lg:text-7xl font-bold w-1/2 text-white text-center">{{ frontPageTexts[currentTextIndex] }}</h1>
+                        <i @click.stop="handlePlusImage" class="fa-solid fa-angle-right text-white text-xs lg:text-xl px-3 lg:px-[23px] py-2 lg:py-4 rounded-full bg-black/60 hover:scale-105"></i>
                     </div>
-                        <div class="absolute bottom-14 left-1/2 flex items-center justify-center space-x-3 text-xs">
+                        <div class="absolute bottom-2 lg:bottom-14 left-44 lg:left-1/2 flex items-center justify-center space-x-3 text-xs">
                             <i @click="currentTextIndex = index" v-for="(dot, index) in frontPageTexts" :key="index" :class="{ '!text-primary text-base scale-110': currentTextIndex === index }" class="fa-solid fa-circle transition text-white ease-linear duration-200"></i>
                         </div>
-                        <PrimaryButton class="absolute bottom-16 right-28 !px-14 !text-base">Enviar mensaje</PrimaryButton>
+                        <PrimaryButton class="absolute bottom-16 right-28 !px-14 !text-base hidden lg:block">Enviar mensaje</PrimaryButton>
                 </figure>
             </section>
 
             <!-- Contenido -->
-            <section class="my-10 mx-2 lg:mx-24">
+            <section class="my-10 mx-3 lg:mx-24">
                 <div class="lg:grid grid-cols-3 gap-x-12">
                     <div>
                         <div class="flex items-center space-x-5">
                             <h2 class="text-2xl text-primary font-bold">Nosotros</h2>
                             <div class="border-b-4 border-primary w-16 mt-[2px]"></div>
                         </div>
-                        <p class="font-bold text-xl mt-5">BIENVENIDOS A <span class="ml-1 text-primary">SUITE ACUARIO MAZATLÁN</span></p>
+                        <p class="font-bold text-lg md:text-xl mt-5">BIENVENIDOS A <span class="ml-1 text-primary">SUITE ACUARIO MAZATLÁN</span></p>
                         <p class="mt-3 text-lg">Somos una empresa dedicada a proporcionar comodidad y tranquilidad en espacios residenciales de calidad, a precios asequibles.</p>
                         <p class="mt-9 text-lg">Nuestra suites son acogedoras y luminosas diseñadas para hacer realidad tus sueños. Con privacidad y una guía local para descubrir los mejores lugares.</p>
                     </div>
 
-                    <figure class="col-span-2 w-full">
-                        <img class="object-contain mx-auto w-3/4" src="../../../public/images/content_image.png" alt="">
+                    <figure class="col-span-2 w-full mt-10 md:mt-0">
+                        <img class="object-contain mx-auto w-full md:w-3/4" src="../../../public/images/content_image.png" alt="">
                     </figure>
                 </div>
 
                 <!-- suites -->
                 <div class="mt-20">
-                    <div class="flex justify-center items-center space-x-7">
+                    <div class="flex justify-center items-center lg:space-x-7">
                         <div class="border-b-4 border-primary w-40 mt-[2px]"></div>
-                        <h2 class="text-2xl font-bold">EXPLORE NUESTRAS <span class="text-primary">SUITES ACUARIO MAZATLÁN</span> </h2>
+                        <h2 class="text-lg lg:text-2xl font-bold text-center text">EXPLORE NUESTRAS <span class="text-primary">SUITES ACUARIO MAZATLÁN</span> </h2>
                         <div class="border-b-4 border-primary w-40 mt-[2px]"></div>
                     </div>
 
-                    <div class="md:grid md:grid-cols-2 lg:grid-cols-3 gap-4 h-[535px] mt-16">
+                    <div class="md:grid md:grid-cols-2 lg:grid-cols-3 gap-4 h-[535px] mt-16 space-y-7 md:space-y-0">
                         <SuiteCard v-for="suite in suites" :key="suite" :suite="suite" />
                     </div>
                 </div>
 
                 <!-- Ubicación  -->
-                <div class="border border-grayD9 rounded-xl grid grid-cols-3 mt-52 mb-12 relative">
+                <div class="border border-grayD9 rounded-xl lg:grid grid-cols-3 mt-[1290px] lg:mt-52 mb-12 py-10 px-4 relative">
                     <div class="col-span-2 lg:px-20 my-auto">
-                        <h2 class="text-2xl font-bold">UBICACIÓN</h2>
+                        <h2 class="text-lg lg:text-2xl font-bold">UBICACIÓN</h2>
                         <p class="my-4 text-[#5C5C5C] leading-7">Nuestras suites están estratégicamente ubicadas en el corazón de la zona turística de Mazatlán, Sinaloa, México. 
                             A pocos pasos, encontrarás una vibrante selección de bares, tiendas y el renombrado acuario. Además, la playa se encuentra a tan solo 3 minutos a pie.
                             Sumérgete en la belleza natural de la región y descubre los encantos de nuestros parques y otros destinos que seguramente dejarán una
@@ -206,16 +203,16 @@
                     </div>
 
                     <!-- images -->
-                    <div class="py-9 px-7">
-                        <figure class="rounded-lg w-full h-full flex items-center">
-                            <i class="fa-solid fa-angle-left"></i>
+                    <div class="lg:py-9 p-4 lg:px-7">
+                        <figure class="rounded-lg w-full h-full flex justify-center items-center ">
+                            <i class="fa-solid fa-angle-left px-2"></i>
                             <img class="mx-auto w-[400px]" src="../../../public/images/location1.png" alt="">
-                            <i class="fa-solid fa-angle-right"></i>
+                            <i class="fa-solid fa-angle-right px-2"></i>
                         </figure>
                     </div>
 
                     <!-- mapa -->
-                    <div class="col-span-2 p-7 mb-16">
+                    <div class="col-span-2 lg:p-7 mb-4 lg:mb-16">
                         <iframe
                         v-if="showMap"
                             class="mt-5 rounded-lg"
@@ -229,8 +226,8 @@
                     </div>
 
                     <!-- Decoraciones -->
-                    <img class="absolute top-0 right-2/3" src="../../../public/images/decoration_location.png" alt="">
-                    <img class="absolute bottom-0 right-11/10" src="../../../public/images/decoration_location_b.png" alt="">
+                    <img class="hidden lg:block absolute top-0 right-2/3" src="../../../public/images/decoration_location.png" alt="">
+                    <img class="hidden lg:block absolute bottom-0 right-11/10" src="../../../public/images/decoration_location_b.png" alt="">
 
                 </div>
             </section>
@@ -343,9 +340,11 @@
                 </div>
                 <div class="flex flex-col space-y-3 mb-3 text-center">
                     <h2 class="text-xl font-bold mb-5">Síguenos</h2>
-                    <a href="https://www.facebook.com/suitesAcuario2021" target="_blank"><i class="fa-brands fa-facebook text-white text-4xl cursor-pointer"></i></a>
-                    <i class="fa-brands fa-square-instagram text-white text-4xl cursor-pointer"></i>
-                    <a href="https://api.whatsapp.com/send?phone=526691178743&text=Hola!%20vi%20tu%20página%20,%20me%20interesa%20su%20servicio!" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp text-white text-4xl cursor-pointer"></i></a>
+                    <div class="flex lg:flex-col justify-center space-x-4 lg:space-x-0">
+                        <a href="https://www.facebook.com/suitesAcuario2021" target="_blank"><i class="fa-brands fa-facebook text-white text-4xl cursor-pointer"></i></a>
+                        <i class="fa-brands fa-square-instagram text-white text-4xl cursor-pointer"></i>
+                        <a href="https://api.whatsapp.com/send?phone=526691178743&text=Hola!%20vi%20tu%20página%20,%20me%20interesa%20su%20servicio!" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp text-white text-4xl cursor-pointer"></i></a>
+                    </div>
                 </div>               
                 <a href="https://dtw.com.mx" target="_blank"
                     class="col-span-full flex justify-end items-center space-x-2 mr-24">
@@ -384,7 +383,12 @@ export default {
             form,
             showMap: false, // variables para el mapa
             urlMaps: 'https://www.google.com.mx/maps/place/Cl%C3%ADnica+Dental+COB+%7C+Dra.Xochitl+Samaniego+%7C+Ortodoncia+%7C+Invisalign+Mazatl%C3%A1n/@23.2273919,-106.4277923,20.89z/data=!4m14!1m7!3m6!1s0x869f53ae682ea40b:0xc2ae8db4aee4b886!2sSuites+Acuario+Mazatl%C3%A1n!8m2!3d23.2274559!4d-106.4278131!16s%2Fg%2F11hzsn6mqy!3m5!1s0x869f53708963eac9:0x4f0a55f45005e42e!8m2!3d23.2275382!4d-106.4277535!16s%2Fg%2F1th57f4q?entry=ttu', // variables para el mapa
-            frontPageTexts: ['Descrube nuestras Suites en Mazatlán', 'Texto número 2 de portada', 'Texto número 3 de portada', 'Texto número 4 de portada'], // variable para texto de portada
+            frontPageTexts: [
+                'Descrube nuestras Suites en Mazatlán',
+                'Tu hogar lejos de casa. Explora nuestras suites',
+                'Texto número 3 de portada',
+                'Texto número 4 de portada'
+                ], // variable para texto de portada
             currentTextIndex: 0, // variable para texto de portada
             timer: null, // variable para texto de portada
             isNavbarFixed: false,
