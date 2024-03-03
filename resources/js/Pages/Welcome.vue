@@ -401,6 +401,7 @@ export default {
             showPreview: false,
             suites: [
                 {
+                    id: 1,
                     imagePath: s1,
                     name: 'Suite clásica',
                     price: '$500/Noche',
@@ -409,6 +410,7 @@ export default {
                     description: 'La Suite Clásica es la elección perfecta para aquellos que buscan una experiencia de alojamiento cómoda y asequible. Esta habitación cuenta con todas las comodidades básicas que necesitas para tu estancia.',
                 },
                 {
+                    id: 2,
                     imagePath: s2,
                     name: 'Suite familiar',
                     price: '$600/Noche',
@@ -417,6 +419,7 @@ export default {
                     description: 'La Suite Duo es la elección perfecta para aquellos que buscan una experiencia de alojamiento cómoda y asequible. Esta habitación cuenta con todas las comodidades básicas que necesitas para tu estancia, incluyendo una cama.',
                 },
                 {
+                    id: 3,
                     imagePath: s3,
                     name: 'Suite premium',
                     price: '$800/Noche',
@@ -437,7 +440,11 @@ export default {
     },  
     mounted() {
         window.addEventListener('scroll', this.handleScroll);
+        this.startTimer();
         // this.toast = useToast();
+    },
+    beforeUnmount() {
+        clearInterval(this.timer);
     },
     beforeDestroy() {
         window.removeEventListener('scroll', this.handleScroll);
@@ -504,12 +511,7 @@ export default {
         return `https://www.google.com/maps/embed/v1/place?key=AIzaSyA0s1a7phLN0iaD6-UE7m4qP-z21pH0eSc&q=${formattedUrl}`;
         },
     },
-    mounted() {
-        this.startTimer();
-    },
-    beforeUnmount() {
-        clearInterval(this.timer);
-    },
+    
 };
 </script>
 

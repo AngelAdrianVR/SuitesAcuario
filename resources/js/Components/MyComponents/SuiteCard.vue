@@ -32,7 +32,7 @@
             <p class="text-[#5C5C5C] h-32">{{ suite.description }}</p>
 
             <div class="flex justify-center mt-4 lg:my-4">
-                <PrimaryButton class="!px-16 mb-auto">Ver más</PrimaryButton>
+                <PrimaryButton @click="$inertia.get(route('suites.show', suite.id))" class="!px-16 mb-auto">Ver más</PrimaryButton>
             </div>
         </div>
     </div>

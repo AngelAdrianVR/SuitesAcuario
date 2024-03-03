@@ -33,3 +33,9 @@ Route::middleware([
         return Inertia::render('Dashboard');
     })->name('dashboard');
 });
+
+
+//  Mostrar suite ----------------
+Route::get('/suite/{suite}', function ($suite) {
+    return inertia('ShowSuite', compact('suite'));
+})->name('suites.show');
