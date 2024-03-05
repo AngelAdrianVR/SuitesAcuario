@@ -2,21 +2,6 @@
     <Head title="Bienvenido" />
     <div class="relative">
 
-        <!-- <div v-if="showPreview" class="fixed inset-0 bg-black opacity-90 z-20"></div> -->
-
-        <!-- Imagen centrada sin opacidad -->
-        <!-- <div v-if="showPreview" @click="showPreview = false; currentServiceIndex = null;"
-            class="fixed inset-0 flex justify-center items-center z-30">
-            <div class="relative">
-                <h1 class="text-[#FFD700] my-9 text-3xl text-center">{{ services[currentServiceIndex].title }}</h1>
-                <img class="w-[600px] mx-auto opacity-100" :src="services[currentServiceIndex].image">
-                <button @click="goToContact"
-                    class="mx-auto mt-11 text-2xl rounded-full border-2 border-[#FFD700] text-black dark:text-black flex justify-between items-center py-1 px-5 bg-[#FFD700] transition-all">
-                    Contáctanos
-                </button>
-            </div>
-        </div> -->
-
         <!-- whatsapp button -->
         <a class="md:hidden z-50 w-14 h-14 lg:w-20 lg:h-20 rounded-full bg-green-600 shadow-md shadow-green-800/100 flex items-center justify-center fixed bottom-3 right-3 hover:scale-105"
             href="https://api.whatsapp.com/send?phone=526691178743&text=Hola!%20vi%20tu%20página%20,%20me%20interesa%20su%20servicio!"
@@ -81,15 +66,15 @@
             <div class="h-16 w-32 -mr-10 bg-primary hidden lg:block"></div>
         </nav>
 
-        <main class="pt-16 md:pt-24">
+        <main class="pt-16 md:pt-20">
             <!-- portada -->
             <section>
                 <figure class="w-full relative">
-                    <img class="object-contain w-full" src="../../../public/images/home_1.png" alt="">
+                    <img class="object-contain w-full" :src="frontPageTexts[currentTextIndex].img" alt="">
                     <!-- Texto centrado -->
                     <div class="absolute top-[40%] flex items-center justify-between w-full px-3 md:px-16">
                         <i @click.stop="handleMinusImage" class="fa-solid fa-angle-left text-white text-xs lg:text-xl px-3 lg:px-[23px] py-2 lg:py-4 rounded-full bg-black/60 hover:scale-105"></i>
-                        <h1 class="text-lg lg:text-7xl font-bold w-1/2 text-white text-center">{{ frontPageTexts[currentTextIndex] }}</h1>
+                        <h1 class="text-lg lg:text-7xl font-bold w-2/3 text-white text-center">{{ frontPageTexts[currentTextIndex].text }}</h1>
                         <i @click.stop="handlePlusImage" class="fa-solid fa-angle-right text-white text-xs lg:text-xl px-3 lg:px-[23px] py-2 lg:py-4 rounded-full bg-black/60 hover:scale-105"></i>
                     </div>
                         <div class="absolute bottom-2 lg:bottom-14 left-44 lg:left-1/2 flex items-center justify-center space-x-3 text-xs">
@@ -100,7 +85,7 @@
             </section>
 
             <!-- Contenido -->
-            <section class="my-10 mx-3 lg:mx-24">
+            <section :class="{ 'active': showSection1 }" class="my-10 mx-3 lg:mx-24 fade-in">
                 <div class="lg:grid grid-cols-3 gap-x-12">
                     <div>
                         <div class="flex items-center space-x-5">
@@ -118,7 +103,7 @@
                 </div>
 
                 <!-- suites -->
-                <div class="mt-20">
+                <div :class="{ 'active': showSection2 }" class="mt-20 fade-in-right">
                     <div class="flex justify-center items-center lg:space-x-7">
                         <div class="border-b-4 border-primary w-40 mt-[2px]"></div>
                         <h2 class="text-lg lg:text-2xl font-bold text-center text">EXPLORE NUESTRAS <span class="text-primary">SUITES ACUARIO MAZATLÁN</span> </h2>
@@ -131,7 +116,7 @@
                 </div>
 
                 <!-- Ubicación  -->
-                <div class="border border-grayD9 rounded-xl lg:grid grid-cols-3 mt-[1290px] lg:mt-52 mb-12 py-10 px-4 relative">
+                <div :class="{ 'active': showSection3 }" class="fade-in border border-grayD9 rounded-xl lg:grid grid-cols-3 mt-[1290px] lg:mt-52 mb-12 py-10 px-4 relative">
                     <div class="col-span-2 lg:px-20 my-auto">
                         <h2 class="text-lg lg:text-2xl font-bold">UBICACIÓN</h2>
                         <p class="my-4 text-[#5C5C5C] leading-7">Nuestras suites están estratégicamente ubicadas en el corazón de la zona turística de Mazatlán, Sinaloa, México. 
@@ -232,83 +217,7 @@
                 </div>
             </section>
 
-            <!-- form -->
-            <!-- <section class="lg:mx-24 md:mx-20 mx-1 mt-44 relative" id="Contacto">
-                <div class="lg:grid grid-cols-5 gap-9 mb-6">
-                    <div class="col-span-3 border-2 border-[#FFD700] rounded-[20px] py-10 px-5">
-                        <div class="flex h-full">
-                            <div @click="currentProyectIndex = currentProyectIndex == 0 ? (projects.length - 1) : currentProyectIndex - 1"
-                                class="w-8 h-11/12 lg:h-full mr-2 flex justify-center items-center cursor-pointer">
-                                <button>
-                                    <i class="fa-solid fa-chevron-left"></i>
-                                </button>
-                            </div>
-                            <figure class="w-1/2">
-                                <img :src="projects[currentProyectIndex].image">
-                            </figure>
-                            <div class="w-1/2 flex flex-col ml-5 justify-start text-3xl">
-                                <h1 class="text-center font-bold mb-12 lg:mb-32">PROYECTOS</h1>
-                                <p class="text-center text-xl">{{ projects[currentProyectIndex].description }}</p>
-                            </div>
-                            <div @click="currentProyectIndex = currentProyectIndex == (projects.length - 1) ? 0 : currentProyectIndex + 1"
-                                class="w-8 h-11/12 lg:h-full ml-2 flex justify-center items-center cursor-pointer">
-                                <button>
-                                    <i class="fa-solid fa-chevron-right"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <form @submit.prevent="store" class="col-span-2 md:mt-12 lg:mt-0 mt-8 mx-8">
-                        <h2 class="font-bold mb-3 text-xl text-[#FFD700]">CONTÁCTANOS</h2>
-                        <div class="mb-5">
-                            <label for="name">Nombre <span class="text-[#FFD700]">*</span></label>
-                            <input v-model="form.name" type="text" id="name" required ref="nameInput"
-                                class="active:ring-0 focus:ring-0 border-none outline-none bg-[#D9D9D9] block w-full text-[#808080] rounded-[10px] h-9"
-                                placeholder="Escribe tu nombre" />
-                            <p class="text-red-600 text-xs" v-if="form.errors?.name">{{ form.errors?.name }}</p>
-                        </div>
-                        <div class="mb-5">
-                            <label for="phone">Teléfono <span class="text-[#FFD700]">*</span></label>
-                            <input v-model="form.phone" type="text" id="phone" required
-                                class="active:ring-0 focus:ring-0 border-none outline-none bg-[#D9D9D9] block w-full text-[#808080] rounded-[10px] h-9"
-                                placeholder="Escribe tu teléfono" />
-                            <p class="text-red-600 text-xs" v-if="form.errors?.phone">{{ form.errors?.phone }}</p>
-                        </div>
-                        <div class="mb-5">
-                            <label for="service">Servicio</label>
-                            <select v-model="form.service" id="service"
-                                class="active:ring-0 focus:ring-0 border-none outline-none bg-[#D9D9D9] block w-full text-[#808080] rounded-[10px]">
-                                <option v-for="(service, index) in services" :key="index" :value="service.title">{{
-                                    service.title }}</option>
-                            </select>
-                        </div>
-                        <div class="mb-5">
-                            <label for="address">Dirección</label>
-                            <input v-model="form.address" type="text" id="address"
-                                class="active:ring-0 focus:ring-0 border-none outline-none bg-[#D9D9D9] block w-full text-[#808080] rounded-[10px] h-9"
-                                placeholder="Escribe la dirección donde solicita el servicio" />
-                            <p class="text-red-600 text-xs" v-if="form.errors?.address">{{ form.errors?.address }}</p>
-                        </div>
-                        <div class="mb-5">
-                            <label for="address">Mensaje <span class="text-[#FFD700]">*</span></label>
-                            <textarea v-model="form.message" rows="5" required
-                                class="active:ring-0 focus:ring-0 border-none outline-none bg-[#D9D9D9] block w-full text-[#808080] rounded-[10px]"
-                                placeholder="Dejános un mensaje "></textarea>
-                            <p class="text-red-600 text-xs" v-if="form.errors?.message">{{ form.errors?.message }}</p>
-                        </div>
-                        <button type="submit"
-                            class="mx-auto mt-5 rounded-full border-2 border-[#FFD700] text-black flex justify-between items-center py-1 px-5 hover:bg-[#FFD700] transition-all">
-                            Enviar
-                            <i class="fa-solid fa-chevron-right ml-6"></i>
-                        </button>
-                    </form> -->
-                    <!-- <figure class="rounded-[20px] hidden lg:block">
-                        <img class="rounded-[20px]" src="../../../public/assets/images/contact.png" />
-                    </figure> -->
-                <!-- </div>
-            </section> -->
-
-            <footer class="p-4 md:grid grid-cols-4 gap-3 text-white bg-[#1A1A1A] mt-24 md:relative">
+            <footer :class="{ 'active': showSection4 }" class="fade-in p-4 md:grid grid-cols-4 gap-3 text-white bg-[#1A1A1A] mt-24 md:relative">
                 <div>
                     <figure class="flex space-x-2 items-center h-full md:h-auto space-y-2 mt-7">
                         <img src="../../../public/images/iso_logo.png" class="h-14" alt="logo" />
@@ -369,6 +278,12 @@ import s1 from "../../../public/images/suite1.png";
 import s2 from "../../../public/images/suite2.png";
 import s3 from "../../../public/images/suite3.png";
 
+// home images
+import h1 from "../../../public/images/home_1.png";
+import h2 from "../../../public/images/home_2.png";
+import h3 from "../../../public/images/home_3.png";
+import h4 from "../../../public/images/home_4.png";
+
 
 export default {
     data() {
@@ -381,23 +296,35 @@ export default {
         });
         return {
             form,
+            showSection1: false, // variables para transiciones por seccion
+            showSection2: false, // variables para transiciones por seccion
+            showSection3: false, // variables para transiciones por seccion
+            showSection4: false, // variables para transiciones por seccion
             showMap: false, // variables para el mapa
             urlMaps: 'https://www.google.com.mx/maps/place/Cl%C3%ADnica+Dental+COB+%7C+Dra.Xochitl+Samaniego+%7C+Ortodoncia+%7C+Invisalign+Mazatl%C3%A1n/@23.2273919,-106.4277923,20.89z/data=!4m14!1m7!3m6!1s0x869f53ae682ea40b:0xc2ae8db4aee4b886!2sSuites+Acuario+Mazatl%C3%A1n!8m2!3d23.2274559!4d-106.4278131!16s%2Fg%2F11hzsn6mqy!3m5!1s0x869f53708963eac9:0x4f0a55f45005e42e!8m2!3d23.2275382!4d-106.4277535!16s%2Fg%2F1th57f4q?entry=ttu', // variables para el mapa
             frontPageTexts: [
-                'Descrube nuestras Suites en Mazatlán',
-                'Tu hogar lejos de casa. Explora nuestras suites',
-                'Texto número 3 de portada',
-                'Texto número 4 de portada'
-                ], // variable para texto de portada
+                {
+                    text: 'Descrube nuestras Suites en Mazatlán',
+                    img: h1
+                },
+                {
+                    text: 'Tu hogar lejos de casa. Explora nuestras suites',
+                    img: h2
+                },
+                {
+                    text: 'Disfruta de los mejores lugares en Mazatlán desde la comodidad de nuestras Suites',
+                    img: h3
+                },
+                {
+                    text: 'Descubre la magia de Mazatlán desde el confort de nuestras Suites',
+                    img: h4
+                },
+             ], // variable para texto de portada
             currentTextIndex: 0, // variable para texto de portada
             timer: null, // variable para texto de portada
             isNavbarFixed: false,
-            currentTestimony: 0,
             lastScrollY: 0,
             showMobileMenu: false,
-            currentProyectIndex: 0,
-            currentServiceIndex: null,
-            currentKirbyIndex: 0,
             showPreview: false,
             suites: [
                 {
@@ -439,6 +366,11 @@ export default {
         Head,
     },  
     mounted() {
+        // Verifica si el ancho de la pantalla es menor que cierto valor (puedes ajustar el valor según sea necesario)
+        if (window.innerWidth <= 768) {
+        this.showSection1 = true;
+        }
+
         window.addEventListener('scroll', this.handleScroll);
         this.startTimer();
         // this.toast = useToast();
@@ -452,6 +384,35 @@ export default {
     methods: {
         handleScroll() {
             const currentScrollY = window.scrollY;
+
+            // transiasiones en dispositivos móviles
+            if (window.innerWidth <= 768) {
+
+                if (currentScrollY > 400) {
+                this.showSection2 = true;
+                }
+
+                if (currentScrollY > 2500) {
+                this.showSection3 = true;
+                }
+            } else { // transisiones en computadoras y tablets
+                // Ajusta los valores de offset según sea necesario
+                if (currentScrollY > 400) {
+                    this.showSection1 = true;
+                }
+
+                if (currentScrollY > 1100) {
+                    this.showSection2 = true;
+                }
+
+                if (currentScrollY > 1900) {
+                    this.showSection3 = true;
+                }
+
+                if (currentScrollY > 2300) {
+                    this.showSection4 = true;
+                }
+            }
 
             if (currentScrollY > this.lastScrollY && currentScrollY > window.innerHeight) {
                 // Si se hace scroll hacia abajo y se ha pasado el alto de la pantalla
@@ -468,25 +429,6 @@ export default {
             section.scrollIntoView({ behavior: 'smooth' });
             this.showMobileMenu = false;
         },
-        // store() {
-        //     this.form.post(route("messages.store"), {
-        //         onSuccess: () => {
-        //             this.toast.success("Mensaje enviado correctamente", {
-        //                 timeout: 5000
-        //             });
-
-        //             this.form.reset();
-        //             this.goToContact();
-        //         },
-        //         onError: () => {
-        //             this.toast.error("Completar correctamente formulario", {
-        //                 timeout: 5000
-        //             });
-
-        //             this.goToContact();
-        //         }
-        //     });
-        // },
         goToContact() {
             this.showPreview = false;
             this.scrollToSection('Contacto');
@@ -532,5 +474,27 @@ export default {
 
 html {
     scroll-behavior: smooth;
+}
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(250px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.fade-in.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.fade-in-right {
+  opacity: 0;
+  transform: translateX(350px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.fade-in-right.active {
+  opacity: 1;
+  transform: translateX(0);
 }
 </style>
