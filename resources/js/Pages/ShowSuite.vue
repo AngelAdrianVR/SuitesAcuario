@@ -63,14 +63,6 @@
                 <a href="https://api.whatsapp.com/send?phone=526691178743&text=Hola!%20vi%20tu%20página%20,%20me%20interesa%20su%20servicio!" target="_blank" rel="noopener noreferrer">
                     <i class="fa-brands fa-whatsapp text-xl ml-2 text-primary"></i>
                 </a>
-                <!-- <button class="mx-2 rounded-[10px] px-1 py-px hover:bg-[#FFD700] hover:text-white"
-                    @click="scrollToSection('Inicio')">Inicio</button>
-                <button class="mx-2 rounded-[10px] px-1 py-px hover:bg-[#FFD700] hover:text-white"
-                    @click="scrollToSection('Servicios')">Servicios</button>
-                <button class="mx-2 rounded-[10px] px-1 py-px hover:bg-[#FFD700] hover:text-white"
-                    @click="scrollToSection('Contacto')">Proyectos</button>
-                <button class="mx-2 rounded-[10px] px-1 py-px hover:bg-[#FFD700] hover:text-white"
-                    @click="scrollToSection('Contacto')">Contacto</button> -->
             </div>
             <div class="h-16 w-32 -mr-10 bg-primary hidden lg:block"></div>
         </nav>
@@ -95,23 +87,23 @@
 
             <!-- imagenes -->
             <div class="lg:grid grid-cols-2 gap-9 mt-5 relative space-y-3 lg:space-y-0">
-                <figure class="w-full h-[600px] flex justify-center">
+                <figure :class="{ 'active': image1 }" class="w-full h-[600px] flex justify-center fade-in">
                     <img class="object-cover rounded-xl w-full" :src="suites[suite - 1].images[0]" alt="">
                 </figure>
                 <div class="grid grid-cols-2 gap-7 sm:mt-7 lg:mt-0">
-                    <figure v-if="suites[suite - 1].images?.length > 1" class="w-full">
+                    <figure v-if="suites[suite - 1].images?.length > 1" :class="{ 'active': image2 }" class="w-full fade-in">
                         <img class="object-cover rounded-xl w-full h-[286px]"
                             :src="suites[suite - 1].images[1]" alt="">
                     </figure>
-                    <figure v-if="suites[suite - 1].images?.length > 2" class="w-full">
+                    <figure v-if="suites[suite - 1].images?.length > 2" :class="{ 'active': image3 }" class="w-full fade-in-right">
                         <img class="object-cover rounded-xl w-full h-[286px]"
                             :src="suites[suite - 1].images[2]" alt="">
                     </figure>
-                    <figure v-if="suites[suite - 1].images?.length > 3" class="w-full">
+                    <figure v-if="suites[suite - 1].images?.length > 3" :class="{ 'active': image4 }" class="w-full fade-in">
                         <img class="object-cover rounded-xl w-full h-[286px]"
                             :src="suites[suite - 1].images[3]" alt="">
                     </figure>
-                    <figure v-if="suites[suite - 1].images?.length > 4" class="w-full">
+                    <figure v-if="suites[suite - 1].images?.length > 4" :class="{ 'active': image5 }" class="w-full fade-in-right ">
                         <img class="object-cover rounded-xl w-full h-[286px]"
                             :src="suites[suite - 1].images[4]" alt="">
                     </figure>
@@ -211,6 +203,11 @@ data() {
         currentImageIndex: 0,
         showMobileMenu: false,
         showPreview: false,
+        image1: false, // variables para transiciones por imagen
+        image2: false, // variables para transiciones por imagen
+        image3: false, // variables para transiciones por imagen
+        image4: false, // variables para transiciones por imagen
+        image5: false, // variables para transiciones por imagen
         suites: [
             {
                 id: 1,
@@ -260,6 +257,35 @@ methods:{
     handleScroll() {
         const currentScrollY = window.scrollY;
 
+         // transiasiones en dispositivos móviles
+            if (window.innerWidth <= 768) {
+
+                // if (currentScrollY > 400) {
+                // this.image2 = true;
+                // }
+
+                // if (currentScrollY > 2500) {
+                // this.image3 = true;
+                // }
+            } else { // transisiones en computadoras y tablets
+                // Ajusta los valores de offset según sea necesario
+                // if (currentScrollY > 400) {
+                    this.image1 = true;
+                // }
+
+                // if (currentScrollY > 1100) {
+                    this.image2 = true;
+                // }
+
+                // if (currentScrollY > 1900) {
+                    this.image3 = true;
+                // }
+
+                // if (currentScrollY > 2) {
+                    this.image4 = true;
+                // }
+            }
+
         if (currentScrollY > this.lastScrollY && currentScrollY > window.innerHeight) {
             // Si se hace scroll hacia abajo y se ha pasado el alto de la pantalla
             this.isNavbarFixed = false;
@@ -304,5 +330,27 @@ beforeDestroy() {
 
 html {
     scroll-behavior: smooth;
+}
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(200px);
+  transition: opacity 1s ease, transform 0.7s ease;
+}
+
+.fade-in.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.fade-in-right {
+  opacity: 0;
+  transform: translateX(280px);
+  transition: opacity 1s ease, transform 1.2s ease;
+}
+
+.fade-in-right.active {
+  opacity: 1;
+  transform: translateX(0);
 }
 </style>
