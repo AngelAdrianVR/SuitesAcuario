@@ -5,3 +5,19 @@
 [x-cloak] {
     display: none;
 }
+
+*::-webkit-scrollbar {
+	width: 9px;
+	height: 9px;
+	background: transparent;
+    height: 9px; /* Ajusta según tus preferencias */
+}
+
+*::-webkit-scrollbar-thumb {
+	background: #41BAAE;
+	border-radius: 5px;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+    background: #37a096;
+}
