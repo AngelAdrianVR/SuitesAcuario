@@ -87,24 +87,24 @@
 
             <!-- imagenes -->
             <div class="lg:grid grid-cols-2 gap-9 mt-5 relative space-y-3 lg:space-y-0">
-                <figure :class="{ 'active': image1 }" class="w-full h-[600px] flex justify-center fade-in">
-                    <img class="object-cover rounded-xl w-full" :src="suites[suite - 1].images[0]" alt="">
+                <figure :class="{ 'active': image1 }" class="w-full h-[600px] flex justify-center lg:fade-in">
+                    <img class="object-contain rounded-xl w-full" :src="suites[suite - 1].images[0]" alt="">
                 </figure>
                 <div class="grid grid-cols-2 gap-7 sm:mt-7 lg:mt-0">
-                    <figure v-if="suites[suite - 1].images?.length > 1" :class="{ 'active': image2 }" class="w-full fade-in">
-                        <img class="object-cover rounded-xl w-full h-[286px]"
+                    <figure v-if="suites[suite - 1].images?.length > 1" :class="{ 'active': image2 }" class="w-full lg:fade-in">
+                        <img class="object-contain rounded-xl w-full h-[286px]"
                             :src="suites[suite - 1].images[1]" alt="">
                     </figure>
-                    <figure v-if="suites[suite - 1].images?.length > 2" :class="{ 'active': image3 }" class="w-full fade-in-right">
-                        <img class="object-cover rounded-xl w-full h-[286px]"
+                    <figure v-if="suites[suite - 1].images?.length > 2" :class="{ 'active': image3 }" class="w-full lg:fade-in-right">
+                        <img class="object-contain rounded-xl w-full h-[286px]"
                             :src="suites[suite - 1].images[2]" alt="">
                     </figure>
-                    <figure v-if="suites[suite - 1].images?.length > 3" :class="{ 'active': image4 }" class="w-full fade-in">
-                        <img class="object-cover rounded-xl w-full h-[286px]"
+                    <figure v-if="suites[suite - 1].images?.length > 3" :class="{ 'active': image4 }" class="w-full lg:fade-in">
+                        <img class="object-contain rounded-xl w-full h-[286px]"
                             :src="suites[suite - 1].images[3]" alt="">
                     </figure>
-                    <figure v-if="suites[suite - 1].images?.length > 4" :class="{ 'active': image5 }" class="w-full fade-in-right ">
-                        <img class="object-cover rounded-xl w-full h-[286px]"
+                    <figure v-if="suites[suite - 1].images?.length > 4" :class="{ 'active': image5 }" class="w-full lg:fade-in-right ">
+                        <img class="object-contain rounded-xl w-full h-[286px]"
                             :src="suites[suite - 1].images[4]" alt="">
                     </figure>
                 </div>
@@ -175,9 +175,9 @@
                     </div>
                 </div>               
                 <a href="https://dtw.com.mx" target="_blank"
-                    class="col-span-full flex justify-end items-center space-x-2 mr-24">
+                    class="col-span-full flex justify-end items-center space-x-2 mr-16">
                     <small>by Digtital Tech Work</small>
-                    <img class="w-6" src="../../../public/images/dtw_logo.png">
+                    <img class="w-20" src="../../../public/images/white_logo.png">
                 </a>
             </footer>
 

@@ -217,7 +217,7 @@
                 </div>
             </section>
 
-            <footer :class="{ 'active': showSection4 }" class="fade-in p-4 md:grid grid-cols-4 gap-3 text-white bg-[#1A1A1A] mt-24 md:relative">
+            <footer class="lg:fade-in p-4 md:grid grid-cols-4 gap-3 text-white bg-[#1A1A1A] mt-24 md:relative">
                 <div>
                     <figure class="flex space-x-2 items-center h-full md:h-auto space-y-2 mt-7">
                         <img src="../../../public/images/iso_logo.png" class="h-14" alt="logo" />
@@ -256,9 +256,9 @@
                     </div>
                 </div>               
                 <a href="https://dtw.com.mx" target="_blank"
-                    class="col-span-full flex justify-end items-center space-x-2 mr-24">
-                    <small>by Digtital Tech Work</small>
-                    <img class="w-6" src="../../../public/images/dtw_logo.png">
+                    class="col-span-full flex justify-end items-center space-x-2 mr-14">
+                    <small>By </small>
+                    <img class="w-20" src="../../../public/images/white_logo.png">
                 </a>
             </footer>
         </main>
@@ -409,7 +409,7 @@ export default {
                     this.showSection3 = true;
                 }
 
-                if (currentScrollY > 2300) {
+                if (currentScrollY > 2100) {
                     this.showSection4 = true;
                 }
             }
